@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 
-const VERIFY_TOKEN = "EAAaBkoo1qBgBQwuQJY3hD8WVwLv7yW0qQx9DXDbvHsWW35ZAZCZCtVXtlQEZAl4wqS30cuGAXcih6C9M7Mf4lQZALyThPHbWu8AcNdYBkwkXSntV7C8G4LBPGJJnWo9ZBlXZAu6wXq95ya1WSMekXfrqWpeCnzW4oUSwQFSd4FZCl1BBmbujptJBqdH0d6QvFaDlvX1FDlgplZCeJW0oETqROIWgVlavF257ChWzZAxZCsx9HosMhy32iTcXkLFNdMcGjU4SXp8XbgTZBnNZBrZAWKMFXNd9jU";
+const VERIFY_TOKEN = "ismyverifytoken";
 
 /* 1️⃣ Webhook Verification (GET) */
 app.get("/webhook", (req, res) => {
