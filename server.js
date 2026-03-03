@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 
-const VERIFY_TOKEN = "EAAaBkoo1qBgBQ1ZBpCZA472LZAdMtCUQTRnDlFep2PZCgGeL8GkPuRu4kzb7uf9J8pCvmZCEC2A2GmjzMN1VlbQgdqMa4dDO3EJzGwZAmOO7YSgoM4JZBfZBhobFlOp9g1kaIY8lxhWJliiIydh5lkJGjQeP9MIol4Dipfay0zUfz0TuwAZCC1ZCp9ZCzZCyRQ9oep4ZABbeMY12V2ZBZAyVledezPEdViiA1EcnWvl5l6rVItyZC6yu1CGZB7yhZB2RTrRvjRj96WYWnru4Dolu2sYZCsuF40k2Nif";
+const VERIFY_TOKEN = "EAAaBkoo1qBgBQwuQJY3hD8WVwLv7yW0qQx9DXDbvHsWW35ZAZCZCtVXtlQEZAl4wqS30cuGAXcih6C9M7Mf4lQZALyThPHbWu8AcNdYBkwkXSntV7C8G4LBPGJJnWo9ZBlXZAu6wXq95ya1WSMekXfrqWpeCnzW4oUSwQFSd4FZCl1BBmbujptJBqdH0d6QvFaDlvX1FDlgplZCeJW0oETqROIWgVlavF257ChWzZAxZCsx9HosMhy32iTcXkLFNdMcGjU4SXp8XbgTZBnNZBrZAWKMFXNd9jU";
 
 /* 1️⃣ Webhook Verification (GET) */
 app.get("/webhook", (req, res) => {
@@ -27,7 +27,7 @@ app.post("/webhook", (req, res) => {
 
   res.sendStatus(200);
 });
-
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
