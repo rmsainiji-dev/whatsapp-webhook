@@ -6,18 +6,23 @@ app.use(bodyParser.json());
 
 const VERIFY_TOKEN = "ismyverifytoken";
 
-/* 1️⃣ Webhook Verification (GET) */
-app.get("/webhook", (req, res) => {
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
 
-  if (mode === "subscribe" && token === VERIFY_TOKEN) {
-    console.log("Webhook verified successfully!");
-    res.status(200).send(challenge);
-  } else {
+
+app.get("/webhook", (req, res) => {
+    const mode = req.query["hub.mode"];
+    const token = req.query["hub.verify_token"];
+    const challenge = req.query["hub.challenge"];
+
+    if (mode === "subscribe" && token === VERIFY_TOKEN) {
+        console.log("LOG: Verification match found.");
+        
+        // 1. Force plain text header
+        res.setHeader('Content-Type', 'text/plain');
+        
+        // 2. Send ONLY the challenge (no JSON, no extra spaces)
+        return res.status(200).send(challenge); 
+    }
     res.sendStatus(403);
-  }
 });
 
 /* 2️⃣ Receive Messages (POST) */
